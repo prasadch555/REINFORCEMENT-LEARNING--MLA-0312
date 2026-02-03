@@ -1,0 +1,14 @@
+import random
+alpha = [1,1,1]
+beta  = [1,1,1]
+for _ in range(100):
+    samples = [random.betavariate(alpha[i], beta[i]) for i in range(3)]
+    arm = samples.index(max(samples))
+    reward = random.choice([0,1])
+    alpha[arm] += reward
+    beta[arm] += 1 - reward
+print("Thompson Sampling Results:\n")
+for i in range(3):
+    print(f"Ad {i+1} → Alpha: {alpha[i]} , Beta: {beta[i]}")
+print("\nBest Performing Ad: Ad", alpha.index(max(alpha))+1)
+
