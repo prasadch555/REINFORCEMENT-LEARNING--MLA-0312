@@ -1,0 +1,10 @@
+import numpy as np
+V = np.zeros(3)
+R = [0,1,5]
+gamma = 0.9
+for _ in range(10):
+    for s in range(3):
+        V[s] = R[s] + gamma * V[min(s+1,2)]
+print("State Value Function:\n")
+for s in range(3):
+    print(f"State {s}: {round(V[s],2)}")
