@@ -1,0 +1,13 @@
+import numpy as np
+experiences = ["pick", "move", "lift", "place"]
+td_errors = np.array([1.0, 0.3, 0.8, 0.2])
+priorities = td_errors / td_errors.sum()
+sampled = np.random.choice(
+    experiences,
+    size=4,
+    p=priorities
+)
+print("Experiences:", experiences)
+print("Priorities:", priorities)
+print("Sampled experiences:")
+print(sampled)
