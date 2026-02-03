@@ -1,0 +1,12 @@
+import random
+def simulate(policy, episodes=1000):
+    total_reward = 0
+    for _ in range(episodes):
+        if policy == "random":
+            reward = random.choice([1, 2, 3])
+        else:  # best agent
+            reward = 3
+        total_reward += reward
+    return total_reward / episodes
+print("Value (Random Policy):", simulate("random"))
+print("Value (Best Agent Policy):", simulate("best"))
