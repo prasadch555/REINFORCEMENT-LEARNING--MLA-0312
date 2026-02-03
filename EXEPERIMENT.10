@@ -1,0 +1,12 @@
+import random
+import math
+theta = 0.0
+lr = 0.1
+def policy(theta):
+    return 1 / (1 + math.exp(-theta))  # sigmoid
+for _ in range(100):
+    p_buy = policy(theta)
+    action = 1 if random.random() < p_buy else 0
+    reward = random.choice([1, -1]) if action == 1 else 0
+    theta += lr * reward * (action - p_buy)
+print("Optimized Buy Probability:", round(policy(theta), 2))
