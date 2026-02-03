@@ -1,0 +1,17 @@
+import numpy as np
+states = [0,1]          # 0=Low, 1=High traffic
+actions = [0,1]         # 0=Short, 1=Long green
+R = [[-2,-1],[-5,-2]]   # reward[state][action]
+P = [[0.7,0.3],[0.4,0.6]]
+gamma = 0.9
+V = [0,0]
+policy = [0,0]
+for _ in range(10):
+    # Policy Evaluation
+    for s in states:
+        V[s] = R[s][policy[s]] + gamma * sum(P[s]*np.array(V))
+    # Policy Improvement
+    for s in states:
+        policy[s] = max(actions, key=lambda a: R[s][a] + gamma*sum(P[s]*np.array(V)))
+print("Optimal Policy:", policy)
+print("Value Function:", V)
