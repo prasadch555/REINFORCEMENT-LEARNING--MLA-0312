@@ -1,0 +1,12 @@
+import numpy as np
+states = range(5)
+V = np.zeros(5)
+alpha, gamma = 0.1, 0.9
+rewards = [0, -1, 0, -5, 10]  # trap at 3, goal at 4
+for _ in range(100):
+    s = 0
+    while s != 4:
+        s_next = min(s + 1, 4)
+        V[s] += alpha * (rewards[s_next] + gamma * V[s_next] - V[s])
+        s = s_next
+print(V)
