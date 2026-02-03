@@ -1,0 +1,16 @@
+import random
+position = 0
+destination = 5
+traffic_light = random.choice(["Green", "Red"])
+print("Traffic Light:", traffic_light)
+while position < destination:
+    if position == 2:  # intersection
+        if traffic_light == "Red":
+            print("Car stopped at red light")
+            break
+        else:
+            print("Green light, car moves")
+    position += 1
+    print("Car position:", position)
+if position == destination:
+    print("Destination reached safely!")
