@@ -1,0 +1,13 @@
+import numpy as np
+Q = np.zeros((4,2))  # states x actions
+alpha, gamma, eps = 0.1, 0.9, 0.1
+for _ in range(200):
+    s = 0
+    a = np.random.choice([0,1])
+    while s < 3:
+        r = 1 if s == 2 else -0.1
+        s2 = s + 1
+        a2 = np.random.choice([0,1])
+        Q[s,a] += alpha * (r + gamma*Q[s2,a2] - Q[s,a])
+        s, a = s2, a2
+print(Q)
