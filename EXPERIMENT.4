@@ -1,0 +1,21 @@
+import numpy as np
+# Grid size
+rows, cols = 3, 3
+# Initialize state-value function
+V = np.zeros((rows, cols))
+# Discount factor
+gamma = 0.9
+# Reward for each step (moving costs -1)
+reward = -1
+# Policy Iteration (value update for 10 iterations)
+for _ in range(10):
+    for i in range(rows):
+        for j in range(cols):
+            # For simplicity, assume all moves equally possible
+            V[i,j] = reward + gamma * np.max(V)
+# Print Optimal State Values in required format
+print("Optimal State Values:\n")
+for i in range(rows):
+    for j in range(cols):
+        print(f"({i},{j}): {round(V[i,j],2)}", end="   ")
+ print()
