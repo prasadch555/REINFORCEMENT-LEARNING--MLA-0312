@@ -1,0 +1,15 @@
+import random
+arms = [1,2,3]
+Q = [0]*3
+N = [0]*3
+eps = 0.1
+for _ in range(100):
+    if random.random() < eps:
+        a = random.randint(0,2)
+    else:
+        a = Q.index(max(Q))
+    r = random.random()*arms[a]
+    N[a] += 1
+    Q[a] += (r-Q[a])/N[a]
+print("Average Revenue per Arm:", Q)
+print("Best Strategy:", Q.index(max(Q))+1)
