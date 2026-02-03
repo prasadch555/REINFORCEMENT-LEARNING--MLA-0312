@@ -1,0 +1,11 @@
+import random
+g=[[0,0,1,0,0],[0,-1,0,1,0],[0,0,0,-1,0],[1,0,0,0,0],[0,0,-1,0,1]]
+a=[(-1,0),(1,0),(0,-1),(0,1)]
+s=(0,0); R=0
+for i in range(15):
+    d=random.choice(a)
+    r,c=s[0]+d[0],s[1]+d[1]
+    if 0<=r<5 and 0<=c<5: s=(r,c)
+    R+=g[s[0]][s[1]]
+    print(i+1,s,g[s[0]][s[1]])
+print("Total Reward:",R)
