@@ -1,0 +1,17 @@
+import numpy as np
+# Define states (locations) and rewards
+states = [0, 1, 2, 3]  # 4 locations
+R = [0, 1, -1, 5]      # rewards for each state
+gamma = 0.9             # discount factor
+# Initialize state-value function
+V = np.zeros(len(states))
+# Value Iteration for 10 iterations
+for _ in range(10):
+    for s in states:
+        # Assuming all actions lead to best next state
+        V[s] = R[s] + gamma * max(V)
+# Print state values in exam-friendly format
+print("State Values after Value Iteration:\n")
+for s in states:
+    print(f"Location {s}: {round(V[s],2)}")
+print("\nOptimal Dispatch Location:", np.argmax(V))
