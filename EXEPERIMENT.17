@@ -1,0 +1,9 @@
+import numpy as np
+Q1 = np.zeros((4,3)); Q2 = np.zeros((4,3))
+alpha, gamma = 0.1, 0.9
+for _ in range(100):
+    s = np.random.randint(0,3)
+    a = np.argmax(Q1[s])
+    r = np.random.randn()
+    Q1[s,a] += alpha*(r + gamma*np.max(Q2[s+1]) - Q1[s,a])
+print(Q1)
