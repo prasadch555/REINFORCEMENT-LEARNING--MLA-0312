@@ -1,0 +1,17 @@
+import numpy as np
+np.random.seed(1)
+state_size = 4
+action_size = 2
+W_shared = np.random.rand(state_size, 8)
+W_value = np.random.rand(8, 1)
+W_adv = np.random.rand(8, action_size)
+state = np.random.rand(state_size)
+hidden = state @ W_shared
+value = hidden @ W_value
+advantage = hidden @ W_adv
+Q = value + (advantage - advantage.mean())
+print("State:", state)
+print("Value:", value)
+print("Advantage:", advantage)
+print("Dueling DQN Q-values:")
+print(Q)
